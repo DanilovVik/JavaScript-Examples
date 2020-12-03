@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+</head>
+
+<body>
+    <form>
+        Login: <input type="text">
+        Password: <input type="text">
+        <input type="submit">
+    </form>
+
+    <script>
+        let form = document.querySelector('form')
+        let login = document.querySelector('input')
+        let password = document.querySelector('input + input')
+
+        if (localStorage.length != 0) {
+            login.value = localStorage.login
+            password.value = localStorage.password
+        }
+
+        form.addEventListener('submit', () => {
+            localStorage.login = login.value
+            localStorage.password = password.value
+            
+            if (login.value == 'hello' && password.value == 'world') {
+                document.write('welcome')
+            }
+        })
+    </script>
+</body>
+</html>

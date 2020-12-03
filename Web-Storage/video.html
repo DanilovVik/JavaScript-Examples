@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Video</title>
+    <style>
+        video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 640px;
+        }
+    </style>
+</head>
+<body>
+    <!--https://coverr.co/-->
+    <video src="https://storage.coverr.co/videos/DUKhFlmGwTyN2vdUe02klp00e54aqapqTE?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IjExNDMyN0NEOTRCMUFCMTFERTE3IiwiaWF0IjoxNTg2MzU4MDQ5fQ.kpe38x_uEMyhkRMvmlY5ct6Q7Anog-oytj0yaslwul8" preload="auto" controls></video>
+
+    <script>
+        window.onload = () => {
+            let video = document.querySelector('video')
+            
+            if(localStorage.currentTime){
+                video.currentTime = localStorage.currentTime
+            }
+            
+            video.addEventListener('timeupdate', () => localStorage.currentTime = video.currentTime)
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo List</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        li {
+            user-select: none;
+            color: red;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .close {
+            background: none;
+            border: none;
+            font-weight: bold;
+            color: green;
+        }
+
+        p {
+            display: inline;
+        }
+
+        time {
+            color: blue;
+        }
+
+    </style>
+</head>
+
+<body>
+    <input type="text"><button class="add">add mark</button><button class="clear">clear storage</button>
+
+    <ul></ul>
+
+    <script>
+        let input = document.querySelector('input')
+        input.focus()
+
+        let addButton = document.querySelector('.add')
+
+        let list = document.querySelector('ul')
+
+        if (localStorage.length != 0) {
+            for (let i = 0; i < localStorage.length; i++) {
+                let key = localStorage.key(i)
+
+                let template = `${localStorage.getItem(key)}`
+                list.insertAdjacentHTML('afterbegin', template)
+            }
+
+            document.querySelectorAll('.close').forEach(b => {
+                b.addEventListener('click', e => {
+                    let item = e.target.parentElement
+
+                    list.removeChild(item)
+                    localStorage.removeItem(`${item.dataset.id}`)
+                })
+            })
+        }
+
+        window.addEventListener('keydown', e => {
+            if (e.keyCode == 13) addButton.click()
+        })
+
+        addButton.addEventListener('click', () => {
+            let text = input.value
+
+            let template = `<li data-id="${++localStorage.length}"><button class="close">V</button><time>${new Date().toLocaleDateString()}</time> <p>${text}</p></li>`
+
+            list.insertAdjacentHTML('afterbegin', template)
+            localStorage.setItem(`${++localStorage.length}`, template)
+
+            input.value = ''
+
+            document.querySelector('.close').addEventListener('click', e => {
+                let item = e.target.parentElement
+
+                list.removeChild(item)
+                localStorage.removeItem(`${item.dataset.id}`)
+            })
+        })
+
+        document.querySelector('.clear').onclick = () => {
+            localStorage.clear()
+            document.querySelectorAll('li').forEach(item => list.removeChild(item))
+            input.focus()
+        }
+
+    </script>
+</body>
+
+</html>
