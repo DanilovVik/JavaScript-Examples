@@ -14,7 +14,7 @@ class ShowCommand extends Command {
         )
       })
     } else {
-      console.log('There are no todos.')
+      this.log('There are no todos.')
     }
   }
 }
