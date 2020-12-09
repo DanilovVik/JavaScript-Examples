@@ -1,5 +1,5 @@
 const { Command } = require('@oclif/command')
-const { Todo } = require('../db')
+const Todo = require('../db')
 const chalk = require('chalk')
 
 class RemoveCommand extends Command {
@@ -20,8 +20,8 @@ RemoveCommand.args = [
   {
     name: 'id',
     description: 'todo id',
-    required: true,
-  },
+    required: true
+  }
 ]
 
 module.exports = RemoveCommand

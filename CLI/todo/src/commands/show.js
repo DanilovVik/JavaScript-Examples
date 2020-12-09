@@ -1,5 +1,5 @@
 const { Command } = require('@oclif/command')
-const { Todo } = require('../db')
+const Todo = require('../db')
 const chalk = require('chalk')
 
 class ShowCommand extends Command {
