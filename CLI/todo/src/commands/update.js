@@ -1,5 +1,5 @@
 const { Command } = require('@oclif/command')
-const { Todo } = require('../db')
+const Todo = require('../db')
 const chalk = require('chalk')
 
 class UpdateCommand extends Command {
@@ -22,8 +22,8 @@ UpdateCommand.args = [
   {
     name: 'id',
     description: 'todo id',
-    required: true,
-  },
+    required: true
+  }
 ]
 
 module.exports = UpdateCommand

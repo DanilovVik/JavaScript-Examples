@@ -1,5 +1,5 @@
 const { Command } = require('@oclif/command')
-const { Todo } = require('../db')
+const Todo = require('../db')
 const chalk = require('chalk')
 
 class ShowCommand extends Command {
@@ -14,7 +14,7 @@ class ShowCommand extends Command {
         )
       })
     } else {
-      console.log('There are no todos.')
+      this.log('There are no todos.')
     }
   }
 }

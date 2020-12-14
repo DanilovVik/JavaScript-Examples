@@ -1,5 +1,5 @@
 const { Command } = require('@oclif/command')
-const { Todo } = require('../db')
+const Todo = require('../db')
 const chalk = require('chalk')
 
 class AddCommand extends Command {
@@ -9,7 +9,7 @@ class AddCommand extends Command {
       await Todo.push({
         id: Todo.value().length,
         task: argv.join(' '),
-        done: false,
+        done: false
       }).write()
       this.log(chalk.green('New todo created.'))
     } catch {
